@@ -1,16 +1,18 @@
 <script>
-	import Test from './Test.svelte'
+	import Main from './Components/Main.svelte'
 	export let name;
 	let name1 = 'svelte'
 </script>
 
-<main>
+<!-- <main>
 	<h1>Hello {name1}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 </main>
-<Test/>
+<Test/> -->
+
+<Main></Main>
 <style>
-	main {
+	/* main {
 		text-align: center;
 		padding: 1em;
 		max-width: 240px;
@@ -28,5 +30,5 @@
 		main {
 			max-width: none;
 		}
-	}
+	} */
 </style>
