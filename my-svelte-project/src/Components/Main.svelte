@@ -3,8 +3,8 @@
 </script>
 
 <main>
-    <MainImgBox></MainImgBox>
-	</main>
+	<MainImgBox></MainImgBox>
+</main>
 <style>
 	
 </style>

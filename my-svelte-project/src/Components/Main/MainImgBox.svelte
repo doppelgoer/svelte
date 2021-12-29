@@ -31,7 +31,7 @@
 <style>
     .main-img-container{
         position: relative;
-        /* background-color: black; */
+        background-color: black;
         width: 100%;
         height: 100vh;
         display: grid;
