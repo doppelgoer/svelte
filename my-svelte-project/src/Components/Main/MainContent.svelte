@@ -1,5 +1,6 @@
 <script>
 let visible = false;
+let visible1 = false;
 function typewriter(node, { speed = 1 }) {
 		const valid = (
 			node.childNodes.length === 1 &&
@@ -22,9 +23,11 @@ function typewriter(node, { speed = 1 }) {
 		};
 	}
     setInterval(()=>{
-        visible = !visible;
+        visible1 = !visible1;
     }, 5000)
-
+    setTimeout(() => {
+        visible = true;
+    }, 2000);
 </script>
 
 
@@ -32,42 +35,64 @@ function typewriter(node, { speed = 1 }) {
     <div class="header-container">
         <div class="header-logo">PORTFOLIO</div>
         <!-- <div class="header-logo">PORTFOLIO</div> -->
-        <div class='header-menu'>뭐하징</div>
-        <div class='header-menu'>SKILL</div>
-        <div class='header-menu'>CONTACT</div>
-        <div class='header-menu'>ABOUT</div>
-
+        <div class="header-menus">
+            <div class='header-menu'>뭐하징zzz</div>
+            <div class='header-menu'>SKILL</div>
+            <div class='header-menu'>CONTACT</div>
+            <div class='header-menu'>ABOUT</div>
+        </div>
     </div>
     <div class="white-line"></div>
-    <div class="typing-warpper">
-        <!-- <h1 class="typing-txt" >
-            WLCOME TO MY PORTFOLIO
-        </h1> -->
-        {#if visible}
-        <span class="typing-txt1" transition:typewriter>
-            WELCOME TO MY PORTFOLIO
-        </span>
-        {/if}
-        <span class="typing-cursor">|</span>
+    <div class="main-content-container">
+        <div class="main-content-wrapper"></div>
+        <div class="txt-wrapper">
+            <div class="typing-warpper">
+                <!-- <h1 class="typing-txt" >
+                    WLCOME TO MY PORTFOLIO
+                </h1> -->
+                {#if visible}
+                    {#if visible1}
+                    <span class="typing-txt1" transition:typewriter>
+                        WELCOME TO MY PORTFOLIO
+                    </span>
+                    {/if}
+                {/if}
+                <span class="typing-cursor">|</span>
+            </div>
+        </div>
     </div>
 </div>
 
 
 <style>
-.typing-txt1 {
-    font-size: 50px;
-}
-.typing-cursor {
-    font-size: 50px;
-}
-.typing-cursor{
-    animation: typing-cursor 1s infinite;
-}
-@keyframes typing-cursor{
-    50%{
-        opacity: 0;
+    .main-content-container{
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: calc(100% - 65px);
     }
-}
+    .main-content-wrapper{
+        width: 100%;
+        height: 80vh;
+    }
+    .txt-wrapper{
+        width: 100%;
+        /* height: calc(100% - 65px); */
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+
+    }
+    .typing-txt1 {
+        font-size: 50px;
+        text-decoration:underline
+    }
+    .typing-cursor {
+        font-size: 50px;
+        animation: typing-cursor 1s infinite;
+        
+    }
+
 
     .main-content-container{
         /* background-color: blueviolet; */
@@ -89,11 +114,9 @@ function typewriter(node, { speed = 1 }) {
         grid-template-rows: 65px;
         align-items: center;
         color: white;
-        
-        
     }
     .header-logo:nth-child(1){
-        grid-column: span 7;
+        /* grid-column: span 1; */
         /* grid-row: span 6; */
         /* background-color: white; */
         /* place-items: center;
@@ -102,9 +125,22 @@ function typewriter(node, { speed = 1 }) {
         justify-content: center;
         align-content: center;
         justify-items: center; */
-        padding: 30px;
+        padding: 25px;
         color: white;
     }
+    .header-menus{
+        margin-left: 50%;
+        width: 50%;
+        height: 100%;
+        grid-column: span 11;
+        display: grid;
+        align-items: center;
+        /* justify-content: end; */
+        grid-template-columns: repeat(6, 1fr);
+    }
+    /* .header-menus:nth-child(1){
+        grid-column: span 11;
+    } */
     /* .header-container:nth-child(11){
         background-color: white;
     } */
@@ -170,6 +206,11 @@ function typewriter(node, { speed = 1 }) {
         }
         100%{
             width: 0%;
+        }
+    }
+    @keyframes typing-cursor{
+        50%{
+            opacity: 0;
         }
     }
 
