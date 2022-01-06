@@ -1,6 +1,5 @@
 <script>
-let visible = false;
-let visible1 = false;
+
 function typewriter(node, { speed = 1 }) {
 		const valid = (
 			node.childNodes.length === 1 &&
@@ -22,12 +21,16 @@ function typewriter(node, { speed = 1 }) {
 			}
 		};
 	}
-    setInterval(()=>{
-        visible1 = !visible1;
-    }, 5000)
-    setTimeout(() => {
-        visible = true;
-    }, 2000);
+
+    let visible = false; 
+    const firstTimeOut = setInterval(()=>{
+        visible = !visible;
+        clearTimeout(firstTimeOut)
+        setInterval(() => {
+        visible = !visible;
+            
+        }, 5000);
+    }, 2000)
 </script>
 
 
@@ -51,13 +54,14 @@ function typewriter(node, { speed = 1 }) {
                     WLCOME TO MY PORTFOLIO
                 </h1> -->
                 {#if visible}
-                    {#if visible1}
-                    <span class="typing-txt1" transition:typewriter>
-                        WELCOME TO MY PORTFOLIO
-                    </span>
-                    {/if}
+                <span class="typing-txt1" transition:typewriter>
+                    WELCOME TO MY PORTFOLIO
+                </span>
                 {/if}
                 <span class="typing-cursor">|</span>
+                <div class="typped-txt">Developer JoY
+
+                </div>
             </div>
         </div>
     </div>
@@ -69,43 +73,40 @@ function typewriter(node, { speed = 1 }) {
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: calc(100% - 65px);
+        height: 100%;
+        position: absolute;
+        height: calc( 100% - 65px );
     }
     .main-content-wrapper{
         width: 100%;
         height: 80vh;
     }
     .txt-wrapper{
-        width: 100%;
+        width: auto;
         /* height: calc(100% - 65px); */
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: flex-start;
+        margin-left :50px
 
+    }
+    .typped-txt{
+        font-size: 25px;
+        color:rgb(190, 190, 190)
     }
     .typing-txt1 {
         font-size: 50px;
-        text-decoration:underline
+        text-decoration:underline;
+        color:rgb(190, 190, 190)
     }
     .typing-cursor {
         font-size: 50px;
         animation: typing-cursor 1s infinite;
+        color:rgb(190, 190, 190)
         
     }
 
 
-    .main-content-container{
-        /* background-color: blueviolet; */
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        /* display: grid;
-        grid-template-rows: auto; */
-        /* display: grid; */
-        /* grid-template-columns: repeat(10, 1fr);
-        grid-template-rows: repeat(10, 1fr); */
-        /* background-color: blueviolet; */
-    }
     .header-container{
         width: 100%;
         height: 65px;
