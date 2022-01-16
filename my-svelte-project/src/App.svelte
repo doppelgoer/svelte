@@ -1,7 +1,5 @@
 <script>
 	import Main from './Components/Main.svelte'
-	export let name;
-	let name1 = 'svelte'
 </script>
 
 <!-- <main>
@@ -9,8 +7,10 @@
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 </main>
 <Test/> -->
+<main class='test'>
 
-<Main></Main>
+	<Main></Main>
+</main>
 <style>
 	/* main {
 		text-align: center;

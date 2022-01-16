@@ -3,10 +3,9 @@
 	import SecContent from './SecContent/SecContent.svelte'
 </script>
 
-<main>
+<main class='test'>
 	<MainImgBox></MainImgBox>
 	<SecContent></SecContent>
 </main>
 <style>
-	
 </style>
