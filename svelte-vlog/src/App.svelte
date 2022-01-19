@@ -1,11 +1,19 @@
 <script>
-  //MyName 컴포넌트를 import 해 오자.
   import MyName from './Component/MyName.svelte';
+  let name = 'JoY';
+  function changeName() {
+    if (name === 'JoY') {
+      name = 'DoP';
+    } else {
+      name = 'JoY';
+    }
+  }
 </script>
 
 <main>
-  <!-- MyName 컴포넌트에 name이라는 props를 전달  -->
-  <h1>Hello <MyName name="JoY" />!</h1>
+  <h1>Hello <MyName {name} />!</h1>
+  <!-- 버튼을 만들어 봅시다 -->
+  <button on:click={changeName}>바꿔보자!</button>
 </main>
 
 <style>
