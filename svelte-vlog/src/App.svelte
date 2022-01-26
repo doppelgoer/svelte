@@ -6,7 +6,7 @@
   import {Router, Link, Route} from 'svelte-routing';
 </script>
 
-<!-- 네비게이터+ -->
+<!-- 네비게이터 -->
 <main>
   <!-- 아직 url은 뭔지 잘 모르겠다 이후에 추가요망. -->
   <Router url="">
