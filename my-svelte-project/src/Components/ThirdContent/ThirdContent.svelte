@@ -1,10 +1,4 @@
-<script>
-  // let y;
-  // $:console.log(y)
-</script>
-
-<!-- <svelte:window bind:scrollY={y}/> -->
-<div class="sec-content-container" id="page-2">
+<div class="sec-content-container" id="page-3">
   <div>여기는 두번째 내 소개들어감</div>
 </div>
 
