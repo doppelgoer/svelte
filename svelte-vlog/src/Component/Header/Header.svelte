@@ -1,12 +1,23 @@
 <script>
-  //페이지 라우팅을 위해서 svelte-routing을 임포트해준다.
-  import {Link} from 'svelte-routing';
+  import IsLoggedIn from './IsLoggedIn.svelte';
 </script>
 
-<nav>
-  <!-- 네비게이션을 만들고 -->
-  <!-- Link to에 path를 적어넣는다. -->
-  <Link to="/">Home</Link>
-  <Link to="Contact1">Contact1</Link>
-  <Link to="Contact2">Contact2</Link>
-</nav>
+<div class="header-container">
+  <nav>
+    <a href="#/">Home</a>
+    <a href="#/Contact1">Contact1</a>
+    <a href="#/Contact2/1234">Contact2</a>
+  </nav>
+  <IsLoggedIn />
+</div>
+
+<style>
+  a {
+    text-decoration: none !important;
+  }
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+</style>

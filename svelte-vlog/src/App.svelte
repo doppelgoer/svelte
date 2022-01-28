@@ -1,26 +1,20 @@
 <script>
   // Contact 와 Home 컴포넌트를 임포트해준다.
-  import Contact from './Component/Contact/Contact.svelte';
   import Home from './Component/Home/Home.svelte';
+  import Contact from './Component/Contact/Contact.svelte';
   import Header from './Component/Header/Header.svelte';
-  //페이지 라우팅을 위해서 svelte-routing을 임포트해준다.
-  import {Router, Link, Route} from 'svelte-routing';
+  //페이지 라우팅을 위해서 svelte-spa-router를 임포트해준다.
+  import Router from 'svelte-spa-router';
+  //path와 라우팅 할 컴포넌트
+  const routes = {
+    '/': Home,
+    '/Contact1': Contact,
+    '/Contact2/:test': Contact,
+  };
 </script>
 
-<!-- 네비게이터 -->
 <main>
-  <!-- 아직 url은 뭔지 잘 모르겠다 이후에 추가요망. -->
-  <Router url="">
-    <Header />
-
-    <div>
-      <!-- 위에서 적은 Link to에 부합하는 path를 적고
-      해당 path에 보여줄 컴포넌트를 넣는다 -->
-      <Route path="/"><Home /></Route>
-      <!-- 컴포넌트를 라우팅 해주는 방법은 아래 두가지가 있다
-      둘다 똑같습니다! -->
-      <Route path="/Contact1" component={Contact} />
-      <Route path="/Contact2"><Contact /></Route>
-    </div>
-  </Router>
+  <!-- routes 객체를 라우팅 -->
+  <Header />
+  <Router {routes} />
 </main>
