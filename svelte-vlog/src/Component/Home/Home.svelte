@@ -22,7 +22,6 @@
   $: if (sum === 10) {
     alert('합은 10입니다.');
   }
-  // $: alert(`합111은 ${number}입니다.`);
 </script>
 
 <h1>Home</h1>
