@@ -22,6 +22,22 @@
   $: if (sum === 10) {
     alert('합은 10입니다.');
   }
+  let numbers = [
+    {num: 1, string: '일'},
+    {num: 2, string: '이'},
+    {num: 3, string: '삼'},
+    {num: 4, string: '사'},
+    {num: 5, string: '오'},
+    {num: 6, string: '육'},
+    {num: 7, string: '칠'},
+  ];
+  function eachBtn() {
+    // console.log(numbers[numbers.length-1]);
+    // console.log(numbers.length);
+    // numbers = numbers.push({num: numbers[numbers.length - 1].num, string: numbers[numbers.length - 1].num});
+    numbers = numbers.slice(1);
+    console.log(numbers);
+  }
 </script>
 
 <h1>Home</h1>
@@ -53,6 +69,19 @@
       <h2>sum : {sum}은 9보다 큽니다</h2>
     </div>
   {/if}
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr ; grid-gap: 1em">
+  {#each numbers as number, index}
+    <div>{number.string}</div>
+    <!-- <div>인덱스:{index}</div> -->
+  {/each}
+  <button on:click={eachBtn}>버튼</button>
+</div>
+<div style="display: grid; grid-template-columns: 1fr; grid-gap: 1em">
+  {#each numbers as number (number.num)}
+    <div>{number.string}</div>
+  {/each}
 </div>
 
 <style>
