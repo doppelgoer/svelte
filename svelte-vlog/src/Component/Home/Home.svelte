@@ -1,4 +1,6 @@
 <script>
+  import ColorBox from './ColorBox.svelte';
+
   //number 변수 선언
   let number = 0;
   let number2 = 0;
@@ -22,21 +24,22 @@
   $: if (sum === 10) {
     alert('합은 10입니다.');
   }
-  let numbers = [
-    {num: 1, string: '일'},
-    {num: 2, string: '이'},
-    {num: 3, string: '삼'},
-    {num: 4, string: '사'},
-    {num: 5, string: '오'},
-    {num: 6, string: '육'},
-    {num: 7, string: '칠'},
+  let colors = [
+    {num: 1, color: 'pink'},
+    {num: 2, color: 'blue'},
+    {num: 3, color: 'red'},
+    {num: 4, color: 'green'},
+    {num: 5, color: 'yellow'},
+    {test: 6},
+    {num: 7, color: 'grey'},
+    {num: 8, color: 'purple'},
   ];
   function eachBtn() {
     // console.log(numbers[numbers.length-1]);
     // console.log(numbers.length);
     // numbers = numbers.push({num: numbers[numbers.length - 1].num, string: numbers[numbers.length - 1].num});
-    numbers = numbers.slice(1);
-    console.log(numbers);
+    colors = colors.slice(1);
+    console.log(colors);
   }
 </script>
 
@@ -70,21 +73,25 @@
     </div>
   {/if}
 </div>
-
-<div style="display: grid; grid-template-columns: 1fr ; grid-gap: 1em">
-  {#each numbers as number, index}
-    <div>{number.string}</div>
-    <!-- <div>인덱스:{index}</div> -->
-  {/each}
-  <button on:click={eachBtn}>버튼</button>
+<div style="margin: 50px; display: grid; grid-template-columns: 1fr 1fr; grid-gap: 50px">
+  <div>
+    {#each colors as color, index}
+      <ColorBox color={color.color} number={color.num} />
+    {:else}
+      color가 없어요!
+      <!-- <div>인덱스:{index}</div> -->
+    {/each}
+  </div>
+  <div>
+    {#each colors as color (color.num)}
+      <ColorBox color={color.color} number={color.num} test={true} />
+      <div />
+    {:else}
+      color가 없어요!
+    {/each}
+  </div>
 </div>
-<div style="display: grid; grid-template-columns: 1fr; grid-gap: 1em">
-  {#each numbers as number (number.num)}
-    <div>{number.string}</div>
-    <div>{number.string}</div>
-    <div />
-  {/each}
-</div>
+<button on:click={eachBtn}>버튼</button>
 
 <style>
   .numbers-container {
