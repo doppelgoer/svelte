@@ -81,6 +81,7 @@
 <div style="display: grid; grid-template-columns: 1fr; grid-gap: 1em">
   {#each numbers as number (number.num)}
     <div>{number.string}</div>
+    <div>{number.string}</div>
     <div />
   {/each}
 </div>
