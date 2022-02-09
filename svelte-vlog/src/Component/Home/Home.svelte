@@ -1,6 +1,7 @@
 <script>
   import ColorBox from './ColorBox.svelte';
-
+  // import axios from 'https://unpkg.com/axios/dist/axios.min.js';
+  import axios from 'axios';
   //number 변수 선언
   let number = 0;
   let number2 = 0;
@@ -29,17 +30,36 @@
     {num: 2, color: 'blue'},
     {num: 3, color: 'red'},
     {num: 4, color: 'green'},
+    // {num: 9, color: 'purple'},
     {num: 5, color: 'yellow'},
-    {test: 6},
     {num: 7, color: 'grey'},
     {num: 8, color: 'purple'},
   ];
   function eachBtn() {
-    // console.log(numbers[numbers.length-1]);
-    // console.log(numbers.length);
-    // numbers = numbers.push({num: numbers[numbers.length - 1].num, string: numbers[numbers.length - 1].num});
     colors = colors.slice(1);
-    console.log(colors);
+  }
+  let exchangeDate = getExchange();
+  function test() {
+    getExchange();
+  }
+  async function getExchange() {
+    // const res = await fetch(`http://api.manana.kr/exchange/rate/KRW/JPY,USD,KRW.json`);
+    return new Promise(async function (resolve, reject) {
+      let data;
+      try {
+        data = await axios({
+          //token
+          method: 'GET',
+          url: `https://cors-anywhere.herokuapp.com/http://api.manana.kr/exchange/rate/KRW/JPY.json`,
+          // params: _data,
+        });
+        // console.log(dataFromServer);
+        console.log(111, data);
+        resolve(data);
+      } catch (e) {
+        reject(e);
+      }
+    });
   }
 </script>
 
@@ -73,30 +93,54 @@
     </div>
   {/if}
 </div>
-<div style="margin: 50px; display: grid; grid-template-columns: 1fr 1fr; grid-gap: 50px">
+<div class="colors-container">
   <div>
-    {#each colors as color, index}
-      <ColorBox color={color.color} number={color.num} />
+    <!-- #each 객체 as 객체의 아이템, 인덱스 -->
+    {#each colors as color, index (color.color)}
+      <ColorBox color={color.color} />
+      <!-- else 블록은 colors에 요소가 없을 때 실행되는 부분 -->
     {:else}
-      color가 없어요!
-      <!-- <div>인덱스:{index}</div> -->
-    {/each}
-  </div>
-  <div>
-    {#each colors as color (color.num)}
-      <ColorBox color={color.color} number={color.num} test={true} />
-      <div />
-    {:else}
-      color가 없어요!
+      color가 없습니다!
     {/each}
   </div>
 </div>
 <button on:click={eachBtn}>버튼</button>
+<!-- <div>
+  {#each colors as color (color.num)}
+    <ColorBox color={color.color} number={color.num} test={true} />
+    <div />
+  {:else}
+    color가 없어요!
+  {/each}
+</div> -->
 
+<!-- {:else}
+    color가 없어요! -->
+
+<button on:click={test}>환율 정보!</button>
+
+{#await exchangeDate}
+  <p>...waiting</p>
+{:then number1}
+  <p>The number is {number1}</p>
+{:catch e}
+  <p style="color: red">{e}</p>
+{/await}
+
+<!-- http://api.manana.kr/exchange/rate/KRW/JPY,USD,KRW.json -->
 <style>
+  .colors-container {
+    height: 200px;
+    margin: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
+  }
+
   .numbers-container {
     display: flex;
   }
+
   .number-container {
     margin: 0 20px 0 20px;
   }
