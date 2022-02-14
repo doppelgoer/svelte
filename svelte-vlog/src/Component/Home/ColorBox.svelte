@@ -10,7 +10,7 @@
 
 <style>
   .color-container {
-    margin: 10px;
+    margin: 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 50px;
